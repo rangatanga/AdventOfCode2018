@@ -5,19 +5,19 @@
 #include <vector>
 #include <iostream>
 #include <set>
-using namespace std;
+//using namespace std;
 
 int part_one()
 {
-  auto data = read_file_ints("../resources/day1.txt");
-  cout << std::accumulate(data.begin(), data.end(), 0);
+  auto data = read_file<int>("../resources/day1.txt");
+  std::cout << std::accumulate(data.begin(), data.end(), 0);
   return 0;
 }
 
 int part_two()
 {
-  auto data = read_file_ints("../resources/day1.txt");
-  set<int> freqs;
+  auto data = read_file<int>("../resources/day1.txt");
+  std::set<int> freqs;
   int curFreq = 0;
   auto it = data.begin();
 
@@ -32,7 +32,7 @@ int part_two()
     }
   };
 
-  cout << curFreq;
+  std::cout << curFreq;
   return 0;
 }
 
