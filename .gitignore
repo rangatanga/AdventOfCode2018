@@ -30,3 +30,8 @@
 *.exe
 *.out
 *.app
+
+# vs code config json files
+tasks*.json
+settings.json
+launch.json

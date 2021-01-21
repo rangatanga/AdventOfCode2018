@@ -1,36 +1,43 @@
 // basic file operations
-#include <iostream>
-#include <fstream>
-#include <string>
+#include <numeric>
+#include <ranges>
+#include "aoc.h"
 #include <vector>
-#include <iterator>
+#include <iostream>
+#include <set>
 using namespace std;
 
-
-std::vector<int> read_ints(std::istream& is)
+int part_one()
 {
-    std::vector<int> result;
-    std::copy(std::istream_iterator<int>(is),
-              std::istream_iterator<int>(),
-              std::back_inserter(result));
-    return result;
+  auto data = read_file_ints("../resources/day1.txt");
+  cout << std::accumulate(data.begin(), data.end(), 0);
+  return 0;
+}
+
+int part_two()
+{
+  auto data = read_file_ints("../resources/day1.txt");
+  set<int> freqs;
+  int curFreq = 0;
+  auto it = data.begin();
+
+  while (freqs.insert(curFreq).second)
+  {
+    curFreq += *it;
+    it++;
+
+    if (it == data.end())
+    {
+      it = data.begin();
+    }
+  };
+
+  cout << curFreq;
+  return 0;
 }
 
 int main()
 {
-  ifstream myfile;
-  string line;
-  myfile.open("D:/Development/AdventOfCode2018/resources/day1.txt");
-
-  if (myfile.is_open())
-  {
-    auto data = read_ints (myfile);
-  }
-  else
-  {
-    cout << "File not found";
-  }
-
-  myfile.close();
+  part_two();
   return 0;
 }
