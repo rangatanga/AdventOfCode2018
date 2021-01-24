@@ -21,7 +21,7 @@ int part_two()
   int curFreq = 0;
   auto it = data.begin();
 
-  while (freqs.insert(curFreq).second)
+  while (freqs.insert(curFreq).second) //insert returns a fail if element already exists
   {
     curFreq += *it;
     it++;

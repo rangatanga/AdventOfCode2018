@@ -5,19 +5,44 @@
 #include <iterator>
 #include <map>
 
+using namespace std;
+
 template <typename T>
-std::vector<T> read_file(std::string filename)
+vector<T> read_file(string filename)
 {
-    std::ifstream in(filename);
-    std::vector<T> result;
-    std::copy(std::istream_iterator<T>(in),
-              std::istream_iterator<T>(),
-              std::back_inserter(result));
+    ifstream in(filename);
+    vector<T> result;
+
+    string str;
+    // Read the next line from File untill it reaches the end.
+    while (getline(in, str))
+    {
+        // Line contains string of length > 0 then save it in vector
+        if (str.size() > 0)
+            result.push_back(str);
+    }
+    in.close();
+    return result;
+}
+
+template <>
+vector<int> read_file(string filename)
+{
+    ifstream in(filename);
+    vector<int> result;
+
+    string str;
+    while (getline(in, str))
+    {
+        if (str.size() > 0)
+            result.push_back(stoi(str));
+    }
+    in.close();
     return result;
 }
 
 template <typename T1, typename T2>
-bool find_map_value(std::map<T1, T2> m, T2 x)
+bool find_map_value(map<T1, T2> m, T2 x)
 {
     for (auto it = m.begin(); it != m.end(); ++it)
     {
@@ -27,19 +52,19 @@ bool find_map_value(std::map<T1, T2> m, T2 x)
     return false;
 }
 
-std::tuple<int, int> count_repeat_chars(std::string str)
+tuple<int, int> count_repeat_chars(string str)
 {
-    std::map<char, int> m;
+    map<char, int> m;
     for (char const &c : str)
     {
         auto x = m[c];
         m[c]++;
     };
 
-    return std::make_tuple<int, int>((find_map_value<char, int>(m, 2)) ? 1 : 0, (find_map_value<char, int>(m, 3)) ? 1 : 0);
+    return make_tuple<int, int>((find_map_value<char, int>(m, 2)) ? 1 : 0, (find_map_value<char, int>(m, 3)) ? 1 : 0);
 }
 
-int string_diff(std::string str1, std::string str2)
+int string_diff(string str1, string str2)
 {
     int result;
     for (int i = 0; i < str1.length(); i++)
@@ -49,9 +74,9 @@ int string_diff(std::string str1, std::string str2)
     return result;
 }
 
-std::string string_common(std::string str1, std::string str2)
+string string_common(string str1, string str2)
 {
-    std::string result = "";
+    string result = "";
     for (int i = 0; i < str1.length(); i++)
     {
         result += (str1[i] == str2[i] ? str1[i] : '\0');

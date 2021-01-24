@@ -8,6 +8,8 @@
                 "-g",
                 "${file}",
                 "-I${fileDirname}/../include",
+                "-ID:/Software/boost/boost_1_75_0",
+                "-ID:/Software/range-v3/include",
                 "-std=c++20",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}.exe"

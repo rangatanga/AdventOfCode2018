@@ -23,7 +23,6 @@ int part_two()
     {
         for (auto it2 = data.rbegin(); it2 != data.rend(); ++it2)
         {
-            //std::cout << *it << ", " << *it2 << ", " << string_diff(*it, *it2) << "\n";
             if (string_diff(*it, *it2) == 1)
             {
                 std::cout << string_common(*it, *it2) << "\n";

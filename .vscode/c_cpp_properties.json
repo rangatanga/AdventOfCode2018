@@ -4,7 +4,9 @@
             "name": "GCC",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/include"
+                "${workspaceFolder}/include",
+                "D:/Software/boost/boost_1_75_0",
+                "D:/Software/range-v3/include"
             ],
             "defines": [
                 "_DEBUG",
