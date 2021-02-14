@@ -76,6 +76,9 @@ int string_diff(const string &str1, const string &str2)
     return result;
 }
 
+/*
+ * Compare two strings and return characters that are the same in both strings (i.e. same char in same position)
+ */
 string string_common(const string &str1, const string &str2)
 {
     string result = "";
