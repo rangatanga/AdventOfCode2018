@@ -5,6 +5,7 @@
 #include <iterator>
 #include <map>
 #include <boost/date_time.hpp>
+#include <cmath>
 
 using namespace std;
 using namespace boost::posix_time;
@@ -97,4 +98,9 @@ ptime string_to_datetime(const string &str, const string &fmt)
     ptime pt;
     istr >> pt;
     return pt;
+}
+
+int manh_distance(const int &x1, const int &y1, const int &x2, const int &y2)
+{
+    return abs(x1 - x2) + abs(y1 - y2);
 }
